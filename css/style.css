@@ -1,0 +1,10 @@
+.navigation {
+    background-color: #549DC4;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+}
+
+.nav-element {
+    padding: 12px;
+}
