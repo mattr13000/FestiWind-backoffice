@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style src="style.css"></style>
-    <script src="js/main.js" defer></script>
+    <script src="js/workshopForm.js" defer></script>
     <title>Add Workshop</title>
 </head>
+
 <body>
     <header>
         <h1>Add Workshop
         </h1>
     </header>
 
-    <fieldset>
-        <legend>Register</legend>
-            <label for="username">Username</label>
-            <br>
-            <input type=text id="usernameField" name="username" required>
+    <form id="add-workshop-form">
+    <fieldset>       
+        <label for="name">Name</label>
         <br>
+        <input type=text id="" name="name" minlength="3"  maxlength="20" required>
         <br>
-            <label for="password">Password</label>
-            <br>
-            <input type=password id="passwordField" name="password" required>
+        <label for="category">Category</label>
         <br>
+        <input type=text id="" name="category" required>
         <br>
-            <label for="email">E-Mail</label>
-            <br>
-            <input type=email id="emailField" name="email" required>
+        <label for="start-time">Start time</label>
         <br>
+        <input type=datetime-local id="" name="start-time" required>
         <br>
-            <label for="gender">Gender</label>
-            <br>
-            <label for="genderF">F</label>
-        
-            <input type=radio id="genderf" name="genderM" checked>
-            <label for="genderM">M</label>
-        
-            <input type=radio id="genderm" name="genderF">
+        <label for="end-time">End time</label>
         <br>
+        <input type=datetime-local id="" name="end-time" required>
         <br>
-            <button type="submit">Submit</button>
+        <label for="description">Description</label>
+        <br>
+        <input type=text id="" name="description" minlength="3" maxlength="200" required>
+        <br>
+        <label for="max-capacity">Max capacity</label>
+        <br>
+        <input type=number min="0" step="1" id="" name="max-capacity" required>
+        <br>
+        <button type="submit">Submit</button>
     </fieldset>
+    </form>
 </body>
+
 </html>
