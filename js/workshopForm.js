@@ -3,12 +3,19 @@ const addWorkshopForm = document.querySelector("#add-workshop-form");
 addWorkshopForm.addEventListener("submit", (e) => {
     e.preventDefault();
     postWorkshop(e.target);
-    console.log("FORM SUBMITTED")
+    console.log("FORM SUBMITTED");
 });
 
 
 async function postWorkshop(form) {
     const url = "http://127.0.0.1:8080/workshop";
+    
+    const startTimeValue = form.elements["start-time"].value;
+    const endTimeValue = form.elements["end-time"].value;
+
+    const startTimeISO = startTimeValue ? new Date(startTimeValue).toISOString() : null;
+    const endTimeISO = endTimeValue ? new Date(endTimeValue).toISOString() : null;
+
     try {
         const reponse = await fetch(url, {
             method: "POST",
@@ -18,10 +25,11 @@ async function postWorkshop(form) {
             body: JSON.stringify({
                 name: form.elements["name"].value,
                 category: form.elements["category"].value,
-                "start-time": form.elements["start-time"].value,
-                "end-time": form.elements["end-time"].value,
+                startTime: startTimeISO,
+                endTime: endTimeISO,
                 description: form.elements["description"].value,
-                "max-capacity": form.elements["max-capacity"].value
+                totalSubscribers: 0,
+                capacityMax: Number(form.elements["max-capacity"].value)
             })
         });
 
@@ -31,7 +39,7 @@ async function postWorkshop(form) {
 
         const result = await reponse.text();
         console.log("Server response :", result);
-    } catch (erreur) {
-        console.error("Error :", erreur.message);
+    } catch (error) {
+        console.error("Error :", error.message);
     }
 }
