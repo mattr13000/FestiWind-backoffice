@@ -1,0 +1,14 @@
+.validated {
+    color: #238f2a;
+    font-weight: bold;
+}
+
+.canceled {
+    color: red;
+    font-weight: bold;
+}
+
+.pending {
+    color: orange;
+    font-weight: bold;
+}
