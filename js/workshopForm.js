@@ -1,4 +1,7 @@
+getCategories();
+
 const addWorkshopForm = document.querySelector("#add-workshop-form");
+const categoryList = document.querySelector("#categories")
 
 addWorkshopForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -8,13 +11,13 @@ addWorkshopForm.addEventListener("submit", (e) => {
 
 
 async function postWorkshop(form) {
-    const url = "http://127.0.0.1:8080/workshop";
+    const url = "http://127.0.0.1:8080/workshops";
     
     const startTimeValue = form.elements["start-time"].value;
     const endTimeValue = form.elements["end-time"].value;
 
-    const startTimeISO = startTimeValue ? new Date(startTimeValue).toISOString() : null;
-    const endTimeISO = endTimeValue ? new Date(endTimeValue).toISOString() : null;
+    const startTimeISO = startTimeValue ? new Date(startTimeValue).toISOString().replace(/.\d{3}Z$/, "Z") : null;
+    const endTimeISO = endTimeValue ? new Date(endTimeValue).toISOString().replace(/.\d{3}Z$/, "Z") : null;
 
     try {
         const reponse = await fetch(url, {
@@ -39,6 +42,30 @@ async function postWorkshop(form) {
 
         const result = await reponse.text();
         console.log("Server response :", result);
+    } catch (error) {
+        console.log(form);
+        console.log(form.elements);
+        console.error("Error :", error.message);
+    }
+}
+
+async function getCategories() {
+    try {
+        const response = await fetch("http://127.0.0.1:8080/categories");
+
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
+
+        const categories = await response.json();
+
+        categories.forEach(category => {
+            const categoryOption = document.createElement("option");
+            categoryOption.value = category.id
+            categoryOption.textContent = category.name
+            categoryList.append(categoryOption)
+        });
+
     } catch (error) {
         console.error("Error :", error.message);
     }
