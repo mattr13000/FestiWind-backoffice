@@ -32,3 +32,19 @@ coverage/
 Thumbs.db
 .vscode/
 .idea/
+
+
+
+
+
+# API fictive locale
+db.json
+
+# Dépendances locales
+node_modules/
+package.json
+package-lock.json
+
+# Environnement
+.env
+.env.local
