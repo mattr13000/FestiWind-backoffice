@@ -1,6 +1,6 @@
 
 const API_URL = "http://localhost:8080/workshop";
-const workshopId = new URLSearchParams(location.search).get("id");
+const workshopId = new URLSearchParams(location.search).get("id") || "1";
 
 const workshopInfo = document.querySelector("#workshop-info");
 const message = document.querySelector("#message");
