@@ -1,7 +1,7 @@
-getCategories();
-
 const addWorkshopForm = document.querySelector("#add-workshop-form");
 const categoryList = document.querySelector("#categories")
+
+getCategories();
 
 addWorkshopForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -16,8 +16,8 @@ async function postWorkshop(form) {
     const startTimeValue = form.elements["start-time"].value;
     const endTimeValue = form.elements["end-time"].value;
 
-    const startTimeISO = startTimeValue ? new Date(startTimeValue).toISOString().replace(/.\d{3}Z$/, "Z") : null;
-    const endTimeISO = endTimeValue ? new Date(endTimeValue).toISOString().replace(/.\d{3}Z$/, "Z") : null;
+    const startTimeISO = startTimeValue ? new Date(startTimeValue).toISOString().replace(/\.\d{3}Z$/, "Z") : null;
+    const endTimeISO = endTimeValue ? new Date(endTimeValue).toISOString().replace(/\.\d{3}Z$/, "Z") : null;
 
     try {
         const reponse = await fetch(url, {
@@ -27,7 +27,7 @@ async function postWorkshop(form) {
             },
             body: JSON.stringify({
                 name: form.elements["name"].value,
-                category: form.elements["category"].value,
+                categoryID: form.elements["categories"].value,
                 startTime: startTimeISO,
                 endTime: endTimeISO,
                 description: form.elements["description"].value,
@@ -43,8 +43,6 @@ async function postWorkshop(form) {
         const result = await reponse.text();
         console.log("Server response :", result);
     } catch (error) {
-        console.log(form);
-        console.log(form.elements);
         console.error("Error :", error.message);
     }
 }
