@@ -1,12 +1,13 @@
 const addWorkshopForm = document.querySelector("#add-workshop-form");
 const categoryList = document.querySelector("#categories")
+const body = document.querySelector("body")
+const successMessage = document.querySelector("#success-message")
 
 getCategories();
 
 addWorkshopForm.addEventListener("submit", (e) => {
     e.preventDefault();
     postWorkshop(e.target);
-    console.log("FORM SUBMITTED");
 });
 
 
@@ -42,6 +43,10 @@ async function postWorkshop(form) {
 
         const result = await reponse.text();
         console.log("Server response :", result);
+
+        body.removeChild(addWorkshopForm);
+        successMessage.removeAttribute("hidden");
+        
     } catch (error) {
         console.error("Error :", error.message);
     }
@@ -63,6 +68,7 @@ async function getCategories() {
             categoryOption.textContent = category.name
             categoryList.append(categoryOption)
         });
+        
 
     } catch (error) {
         console.error("Error :", error.message);

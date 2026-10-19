@@ -11,41 +11,45 @@
 
 <body>
     <header>
-        <h1>Add Workshop
-        </h1>
+        <h1>Add Workshop</h1>
     </header>
-
     <form id="add-workshop-form">
-    <fieldset>       
-        <label for="name">Name</label>
-        <br>
-        <input type=text id="" name="name" minlength="3"  maxlength="20" required>
-        <br>
-        <label for="categories">Category</label>
-        <br>
-        <select id="categories" name="categories" required>
-            <option value="" disabled selected>Choose a category ...</option>
-        </select>
-        <br>
-        <label for="start-time">Start time</label>
-        <br>
-        <input type=datetime-local id="" name="start-time" required>
-        <br>
-        <label for="end-time">End time</label>
-        <br>
-        <input type=datetime-local id="" name="end-time" required>
-        <br>
-        <label for="description">Description</label>
-        <br>
-        <input type=text id="" name="description" minlength="3" maxlength="200" required>
-        <br>
-        <label for="max-capacity">Max capacity</label>
-        <br>
-        <input type=number min="1" step="1" id="" name="max-capacity" required>
-        <br>
-        <button type="submit">Submit</button>
-    </fieldset>
+        <fieldset>
+            <label for="name">Name</label>
+            <br>
+            <input type=text id="" name="name" minlength="3" maxlength="20" required>
+            <br>
+            <label for="categories">Category</label>
+            <br>
+            <select id="categories" name="categories" required>
+                <option value="" disabled selected>Choose a category ...</option>
+            </select>
+            <br>
+            <label for="start-time">Start time</label>
+            <br>
+            <input type=datetime-local id="" name="start-time" required>
+            <br>
+            <label for="end-time">End time</label>
+            <br>
+            <input type=datetime-local id="" name="end-time" required>
+            <br>
+            <label for="description">Description</label>
+            <br>
+            <input type=text id="" name="description" minlength="3" maxlength="200" required>
+            <br>
+            <label for="max-capacity">Max capacity</label>
+            <br>
+            <input type=number min="1" step="1" id="" name="max-capacity" required>
+            <br>
+            <button type="submit">Submit</button>
+        </fieldset>
     </form>
+    <div id="success-message" hidden>
+        <p>Workshop successfully created</p>
+        <button onClick="window.location.href=window.location.href">Add another workshop</button>
+    </div>
+    
+
 </body>
 
 </html>
