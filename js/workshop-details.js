@@ -1,35 +1,43 @@
+const API_URL = "http://127.0.0.1:8080/workshops";
+const workshopId = new URLSearchParams(location.search).get("id");
 
-const API_URL = "http://localhost:8080/workshop";
-const workshopId = new URLSearchParams(location.search).get("id") || "1";
+// Tests
+// const workshopId = "2be7d198c9b04806a8cb5126cfa93a4f";
 
 const workshopInfo = document.querySelector("#workshop-info");
 const message = document.querySelector("#message");
 
+function createWorkshopElement(element, value) {
+  let e = document.createElement(element);
+  e.textContent = value;
+  workshopInfo.append(e);
+}
+
 async function loadWorkshop() {
   if (!workshopId) {
-    message.textContent = "Workshop ID is missing";
+    console.log("Workshop ID is missing");
     return;
   }
 
   try {
     const response = await fetch(`${API_URL}/${workshopId}`);
-
+    // Test
+    // const response = await fetch("http://127.0.0.1:8080/workshops/0374D6C8-3066-42BE-AD97-4E09A5C4C09F");
     if (!response.ok) {
       throw new Error("Workshop not found");
     }
 
     const workshop = await response.json();
+    console.log(workshop)
+    
+    createWorkshopElement("p", workshop.name);
+    createWorkshopElement("p", workshop.category);
+    createWorkshopElement("p", workshop.startTime);
+    createWorkshopElement("p", workshop.endTime);
+    createWorkshopElement("p", workshop.description);
 
-    workshopInfo.innerHTML = `
-      <h2>Workshop ${workshop.id}</h2>
-      <p><strong>Name:</strong> ${workshop.name}</p>
-      <p><strong>Category:</strong> ${workshop.category}</p>
-      <p><strong>Start Time:</strong> ${workshop.startTime}</p>
-      <p><strong>End Time:</strong> ${workshop.endTime}</p>
-      <p><strong>Description:</strong> ${workshop.description}</p>
-    `;
   } catch (error) {
-    message.textContent = error.message;
+    console.log(error);
   }
 }
 
