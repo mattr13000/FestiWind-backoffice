@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200 px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.workshops-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+
+
+.workshop-card {
+    border: 3px solid #549dc4;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.workshop-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.workshop-card h2 {
+    margin-top: 0;
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+
+.workshop-card p {
+    color: #000000;
+    line-height: 1.5;
+    font-size: 15px;
+    flex-grow: 1;
+    margin-bottom: 24px;
+}
+
+.workshop-card button {
+    background-color: #0077b6;
+    border: 1px solid #caf0f8;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    align-self: flex-end;
+}
+
+.workshop-card button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
