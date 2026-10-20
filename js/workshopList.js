@@ -24,7 +24,7 @@ async function getWorkshops() {
             button.textContent = "More";
 
             button.addEventListener("click", () => {
-                window.location.href = `/workshops.html?id=${workshop.id}`;
+                window.location.href = `../view/workshop-details.html?id=${workshop.id}`;
             });
 
             card.append(title, description, button);
