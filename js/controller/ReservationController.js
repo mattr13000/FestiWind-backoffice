@@ -11,7 +11,7 @@ async function loadReservation() {
         }
 
         const reservations = await response.json();
-        
+
         reservations.forEach(reservation => {
             const row = document.createElement("tr");
 
@@ -36,8 +36,12 @@ async function loadReservation() {
             trashImg.width = 30;
 
             trashImg.addEventListener("click", () => {
-                console.log(reservation.id);
-                deleteReservation(reservation.id, row);
+                const confirmation = confirm(
+                    "Voulez-vous vraiment supprimer cette réservation ?"
+                );
+                if (confirmation) {
+                    deleteReservation(reservation.id, row);
+                }
             });
 
             const actionCell = document.createElement("td");
