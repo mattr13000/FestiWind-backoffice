@@ -1,27 +1,44 @@
-const API_URL = "http://localhost:3000/workshops/1";
+const API_URL = "http://127.0.0.1:8080/workshops";
+const workshopId = new URLSearchParams(location.search).get("id");
 
-async function chargerWorkshop() {
-    try {
-        const response = await fetch(API_URL);
+// Tests
+// const workshopId = "2be7d198c9b04806a8cb5126cfa93a4f";
 
-        if (!response.ok) {
-            throw new Error("Workshop introuvable");
-        }
+const workshopInfo = document.querySelector("#workshop-info");
+const message = document.querySelector("#message");
 
-        const workshop = await response.json();
-
-        document.getElementById("category").value = workshop.category ?? "";
-        document.getElementById("startTime").value = workshop.startTime ?? "";
-        document.getElementById("name").value = workshop.name ?? "";
-        document.getElementById("endTime").value = workshop.endTime ?? "";
-        document.getElementById("description").value = workshop.description ?? "";
-
-        document.querySelector("h1").textContent =
-            `Workshop ${workshop.id}`;
-
-    } catch (error) {
-        console.error("Erreur API :", error);
-    }
+function createWorkshopElement(element, value) {
+  let e = document.createElement(element);
+  e.textContent = value;
+  workshopInfo.append(e);
 }
 
-chargerWorkshop();
+async function loadWorkshop() {
+  if (!workshopId) {
+    console.log("Workshop ID is missing");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/${workshopId}`);
+    // Test
+    // const response = await fetch("http://127.0.0.1:8080/workshops/0374D6C8-3066-42BE-AD97-4E09A5C4C09F");
+    if (!response.ok) {
+      throw new Error("Workshop not found");
+    }
+
+    const workshop = await response.json();
+    console.log(workshop)
+    
+    createWorkshopElement("p", workshop.name);
+    createWorkshopElement("p", workshop.category);
+    createWorkshopElement("p", workshop.startTime);
+    createWorkshopElement("p", workshop.endTime);
+    createWorkshopElement("p", workshop.description);
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+loadWorkshop();
