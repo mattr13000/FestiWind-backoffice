@@ -6,17 +6,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="main.css">
-    <script src="myJS.js" defer></script>
+    <script src=".js" defer></script>
 </head>
 
 <body>
     <nav class="navigation">
         <img src="img/playstore.png" alt="logo" width="100" height="100" class="nav-element">
 
-        <a href="Index.html" class="nav-element">home</a>
-        <a href="add-workshop.html" class="nav-element">add workshop</a>
-        <a href="reservations.html" class="nav-element">reservations</a>
-        <a href="events.html" class="nav-element">events</a>
+        <a href="Index.php" class="nav-element">home</a>
+        <a href="add-workshop.php" class="nav-element">add workshop</a>
+        <a href="reservations.php" class="nav-element">reservations</a>
+        <a href="events.php" class="nav-element">events</a>
 
         <img src="img/person.circle.fill.svg" alt="logout" fill="currentColor" class="nav-element" viewBox="0 0 16 16"
             width="100" height="100">
@@ -24,7 +24,6 @@
     <br>
     <h1>Reservation List</h1>
     <br>
-    <p>
     <table border="1">
         <thead>
             <tr>
