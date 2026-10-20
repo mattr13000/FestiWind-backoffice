@@ -1,6 +1,8 @@
 const API_URL = "http://127.0.0.1:8080/workshops";
-//const workshopId = new URLSearchParams(location.search).get("id");
-const workshopId = "2be7d198c9b04806a8cb5126cfa93a4f";
+const workshopId = new URLSearchParams(location.search).get("id");
+
+// Tests
+// const workshopId = "2be7d198c9b04806a8cb5126cfa93a4f";
 
 const workshopInfo = document.querySelector("#workshop-info");
 const message = document.querySelector("#message");
@@ -18,9 +20,9 @@ async function loadWorkshop() {
   }
 
   try {
-    	
-    //const response = await fetch(`${API_URL}/${workshopId}`);
-    const response = await fetch("http://127.0.0.1:8080/workshops/0374D6C8-3066-42BE-AD97-4E09A5C4C09F");
+    const response = await fetch(`${API_URL}/${workshopId}`);
+    // Test
+    // const response = await fetch("http://127.0.0.1:8080/workshops/0374D6C8-3066-42BE-AD97-4E09A5C4C09F");
     if (!response.ok) {
       throw new Error("Workshop not found");
     }
