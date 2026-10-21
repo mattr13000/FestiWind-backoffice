@@ -15,6 +15,7 @@ async function getWorkshops() {
 
         workshops.forEach(workshop => {
             const card = document.createElement("div")
+            card.classList.add("workshop-card");
             const title = document.createElement("h2");
             const description = document.createElement("p");
             const button = document.createElement("button");
