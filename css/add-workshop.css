@@ -1,0 +1,23 @@
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+#submit {
+    border: none;
+    padding: 16;
+    cursor: pointer;
+}
+
+#add-workshop-form {
+    padding: 8px;
+    border-radius: 2%;
+    border: 1px solid #000000;
+}

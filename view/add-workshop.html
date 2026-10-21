@@ -4,52 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style src="style.css"></style>
-    <script src="js/workshopForm.js" defer></script>
+    <link href="../css/main.css" rel="stylesheet">
+    <script src="../js/workshopForm.js" defer></script>
     <title>Add Workshop</title>
 </head>
 
 <body>
-    <header>
+    <header class="mb-24">
         <h1>Add Workshop</h1>
     </header>
+
     <form id="add-workshop-form">
-        <fieldset>
-            <label for="name">Name</label>
-            <br>
+
+        <div class="form-group mb-8">
+            <label class="bolder" for="name">Name :</label>
             <input type=text id="" name="name" minlength="3" maxlength="20" required>
-            <br>
-            <label for="categories">Category</label>
-            <br>
+        </div>
+
+        <div class="form-group mb-8">
+            <label class="bolder" for="categories">Category :</label>
             <select id="categories" name="categories" required>
                 <option value="" disabled selected>Choose a category ...</option>
             </select>
-            <br>
-            <label for="start-time">Start time</label>
-            <br>
-            <input type=datetime-local id="" name="start-time" required>
-            <br>
-            <label for="end-time">End time</label>
-            <br>
-            <input type=datetime-local id="" name="end-time" required>
-            <br>
-            <label for="description">Description</label>
-            <br>
-            <input type=text id="" name="description" minlength="3" maxlength="200" required>
-            <br>
-            <label for="max-capacity">Max capacity</label>
-            <br>
+        </div>
+
+        <div class="form-group mb-8">
+            <label class="bolder" for="max-capacity">Max capacity :</label>
             <input type=number min="1" step="1" id="" name="max-capacity" required>
-            <br>
-            <button type="submit">Submit</button>
+        </div>
+
+        <div class="form-group mb-8">
+            <label class="bolder" for="start-time">Start time :</label>
+            <input type="datetime-local" id="start-time" name="start-time" required>
+        </div>
+
+        <div class="form-group mb-8">
+            <label class="bolder" for="end-time">End time :</label>
+            <input type="datetime-local" id="end-time" name="end-time" required>
+        </div>
+        <div class="form-group mb-8">
+            <label class="bolder" for="description">Description :</label>
+            <textarea id="description" name="description" rows="4" minlength="3" maxlength="200" required></textarea>
+        </div>
+        
+        <div class="ta-e">
+        <button class="bg-navbar mt-8" type="Submit"  id="submit">Submit</button>
+        </div>
         </fieldset>
     </form>
     <div id="success-message" hidden>
         <p>Workshop successfully created</p>
         <button onClick="window.location.href=window.location.href">Add another workshop</button>
     </div>
-    
-
 </body>
 
 </html>
