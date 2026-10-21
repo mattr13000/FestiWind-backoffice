@@ -25,7 +25,6 @@ async function loadReservation() {
                 reservation.userName,
                 formatDate(reservation.startTime),
                 formatDate(reservation.endTime),
-             //   reservation.status,
             ]
 
             values.forEach(value => {
@@ -34,11 +33,11 @@ async function loadReservation() {
                 row.appendChild(cell);
             });
 
-            const statusClass = reservation.status ? reservation.status.toLowerCase() : "";
+            const statusClass = reservation.status;
             const statusTd = document.createElement("td");
-            statusTd.textContent = reservation.status ?? "";
+            statusTd.textContent = capitalizeFirstLetter(reservation.status);
             statusTd.className = `status-${statusClass}`;
-            row.appendChild(statusTd); //
+            row.appendChild(statusTd);
 
             const trashImg = document.createElement("img");
             trashImg.src = "../assets/images/trash.svg";
@@ -55,6 +54,7 @@ async function loadReservation() {
             });
 
             const actionCell = document.createElement("td");
+            actionCell.classList.add("trashIconContainer");
             actionCell.appendChild(trashImg);
             row.appendChild(actionCell);
 
@@ -112,7 +112,7 @@ function displayPage() {
     });
 
     document.querySelector('#page-info').textContent =
-        `Page ${currentPage} sur ${Math.max(1, Math.ceil(allRows.length / rowsPerPage))}`;
+        `Page ${currentPage} of ${Math.max(1, Math.ceil(allRows.length / rowsPerPage))}`;
 
     document.querySelector('#btn-prev').disabled = currentPage === 1;
 
@@ -133,3 +133,7 @@ document.querySelector('#btn-next').addEventListener('click', () => {
         displayPage();
     }
 });
+
+function capitalizeFirstLetter(val) {
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+}
