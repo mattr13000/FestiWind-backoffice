@@ -32,7 +32,7 @@
 
 .underline {text-decoration: underline;}
 .bold      {font-weight: bold;}
-.bolder    {font-weight: bolder;}
+.bolder    {font-weight: 500;}
 .italic    {font-style: italic;}
 
 /* ANCHOR SPACING */  
