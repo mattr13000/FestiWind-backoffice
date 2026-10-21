@@ -1,14 +1,78 @@
-.validated {
+.status-confirmed {
     color: #238f2a;
-    font-weight: bold;
 }
 
-.canceled {
+.status-cancelled {
     color: red;
-    font-weight: bold;
 }
 
-.pending {
+.status-pending {
     color: orange;
-    font-weight: bold;
+}
+
+#reservations-table{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: shalimar-regular;
+    font-size: 14px;
+    border: 1px solid #000000;
+}
+
+#reservations-table thead tr {
+    background-color: #F2F3F5;
+}
+
+#reservations-table th {
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 500;
+    border-bottom: 1px solid #F2F3F5;
+}
+
+#reservations-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #F2F3F5;
+    vertical-align: middle;
+}
+
+#reservations-table tbody tr:last-child td {
+    border-bottom: 1px solid #000000;
+}
+
+#reservations-table td img {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    margin-top: 10px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    background-color: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#page-info {
+    padding: 8px 16px;
+    background-color: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+body {
+    padding-left: 40px;
+    padding-right: 40px;
 }
