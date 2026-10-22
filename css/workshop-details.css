@@ -66,10 +66,6 @@ button:hover {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 }
 
-/* Garder le formulaire masqué avant le clic sur Update */
-#update-section[hidden] {
-  display: none;
-}
 
 #update-section h2 {
   font-size: 22px;
@@ -118,11 +114,10 @@ button:hover {
 }
 
 /* Bouton Save */
-
 #update-form button[type="submit"] {
   margin-top: 15px;
   padding: 12px 20px;
-  background-color: #2563eb;
+  background-color: #06b6d4;
   color: white;
   border: none;
   border-radius: 8px;
@@ -164,4 +159,11 @@ button:hover {
 .workshop-card[hidden],
 #update-section[hidden] {
   display: none;
+}
+
+#update-section,
+#update-section input,
+#update-section textarea,
+#update-section button {
+  font-family: 'Inter', sans-serif;
 }

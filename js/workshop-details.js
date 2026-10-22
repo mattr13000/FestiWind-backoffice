@@ -1,5 +1,5 @@
-const API_URL = "http://localhost:8080/workshop";
-const workshopId = new URLSearchParams(location.search).get("id") || "550e8400-e29b-41d4-a716-446655440003";
+const API_URL = "http://localhost:8080/workshops";
+const workshopId = new URLSearchParams(location.search).get("id") || "550e8400-e29b-41d4-a716-4466554400P2";
 const updateButton = document.querySelector("#update-button");
 const updateSection = document.querySelector("#update-section");
 const updateForm = document.querySelector("#update-form");
@@ -10,7 +10,6 @@ const descriptionInput = document.querySelector("#update-description");
 const startInput = document.querySelector("#update-start");
 const endInput = document.querySelector("#update-end");
 const capacityInput = document.querySelector("#update-capacity");
-const subscribersInput = document.querySelector("#update-subscribers");
 
 const workshopCard = document.querySelector(".workshop-card");
 // Tests
@@ -85,7 +84,6 @@ updateButton.addEventListener("click", async () => {
     startInput.value = toDateTimeLocal(workshop.startTime);
     endInput.value = toDateTimeLocal(workshop.endTime);
     capacityInput.value = workshop.capacityMax;
-    subscribersInput.value = workshop.totalSubscribers;
 
     updateSection.hidden = false;
     workshopCard.hidden = true;
@@ -106,7 +104,6 @@ updateForm.addEventListener("submit", async (event) => {
     startTime: new Date(startInput.value).toISOString(),
     endTime: new Date(endInput.value).toISOString(),
     capacityMax: Number(capacityInput.value),
-    totalSubscribers: Number(subscribersInput.value)
   };
 
   if (!updatedWorkshop.name || !updatedWorkshop.description) {
@@ -119,10 +116,6 @@ updateForm.addEventListener("submit", async (event) => {
     return;
   }
 
-  if (updatedWorkshop.totalSubscribers > updatedWorkshop.capacityMax) {
-    message.textContent = "Subscribers cannot exceed capacity";
-    return;
-  }
 
   try {
     const response = await fetch(`${API_URL}/${workshopId}`, {
