@@ -1,5 +1,9 @@
 const arrayBody = document.querySelector('#reservations-body');
 
+let currentPage = 1;
+const rowsPerPage = 10;
+let allRows = [];
+
 loadReservation();
 
 
@@ -11,6 +15,7 @@ async function loadReservation() {
         }
 
         const reservations = await response.json();
+        allRows = [];
 
         reservations.forEach(reservation => {
             const row = document.createElement("tr");
@@ -20,7 +25,6 @@ async function loadReservation() {
                 reservation.userName,
                 formatDate(reservation.startTime),
                 formatDate(reservation.endTime),
-                reservation.status,
             ]
 
             values.forEach(value => {
@@ -29,11 +33,16 @@ async function loadReservation() {
                 row.appendChild(cell);
             });
 
+            const statusClass = reservation.status;
+            const statusTd = document.createElement("td");
+            statusTd.textContent = capitalizeFirstLetter(reservation.status);
+            statusTd.className = `status-${statusClass}`;
+            row.appendChild(statusTd);
 
             const trashImg = document.createElement("img");
             trashImg.src = "../assets/images/trash.svg";
             trashImg.alt = "Supprimer";
-            trashImg.width = 30;
+            trashImg.style.filter = trashImg.style.filter = "invert(16%) sepia(98%) saturate(4777%)";
 
             trashImg.addEventListener("click", () => {
                 const confirmation = confirm(
@@ -45,15 +54,17 @@ async function loadReservation() {
             });
 
             const actionCell = document.createElement("td");
+            actionCell.classList.add("trashIconContainer");
             actionCell.appendChild(trashImg);
             row.appendChild(actionCell);
 
-            arrayBody.appendChild(row);
+            allRows.push(row);
         });
     } catch (error) {
         console.error(error);
         statut.textContent = "loading error.";
     }
+    displayPage();
 }
 
 async function deleteReservation(id, row) {
@@ -89,3 +100,40 @@ const formatDate = (isoString) => {
         minute: '2-digit',
     });
 };
+
+function displayPage() {
+    arrayBody.innerHTML = "";
+
+    const start = (currentPage - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+
+    allRows.slice(start, end).forEach(row => {
+        arrayBody.appendChild(row);
+    });
+
+    document.querySelector('#page-info').textContent =
+        `Page ${currentPage} of ${Math.max(1, Math.ceil(allRows.length / rowsPerPage))}`;
+
+    document.querySelector('#btn-prev').disabled = currentPage === 1;
+
+    document.querySelector('#btn-next').disabled =
+        currentPage >= Math.ceil(allRows.length / rowsPerPage);
+}
+
+document.querySelector('#btn-prev').addEventListener('click', () => {
+    if (currentPage > 1) {
+        currentPage--;
+        displayPage();
+    }
+});
+
+document.querySelector('#btn-next').addEventListener('click', () => {
+    if (currentPage < Math.ceil(allRows.length / rowsPerPage)) {
+        currentPage++;
+        displayPage();
+    }
+});
+
+function capitalizeFirstLetter(val) {
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+}

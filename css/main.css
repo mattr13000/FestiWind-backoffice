@@ -1,2 +1,7 @@
+@import url('nav-bar.css');
+@import url('reboot.css');
 @import url('reservation.css');
 @import url('style.css');
+@import url('utilities.css');
+@import url('workshop-details.css');
+@import url('add-workshop.css');
