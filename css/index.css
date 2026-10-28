@@ -84,7 +84,7 @@ body {
     box-shadow: 0 0 0 2px rgba(74, 150, 192, 0.4);
 }
 
-.btn-submit {
+.btn-login {
     width: 100%;
     padding: 12px;
     font-size: 1rem;
@@ -98,10 +98,10 @@ body {
     margin-top: 5px;
 }
 
-.btn-submit:hover {
+.btn-login:hover {
     background-color: #3c7d9f;
 }
 
-.btn-submit:active {
+.btn-login:active {
     transform: scale(0.99);
 }
