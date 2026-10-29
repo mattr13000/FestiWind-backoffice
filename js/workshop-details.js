@@ -46,8 +46,8 @@ async function loadWorkshop() {
     
     createWorkshopElement("p", workshop.name);
     createWorkshopElement("p", workshop.category);
-    createWorkshopElement("p", workshop.startTime);
-    createWorkshopElement("p", workshop.endTime);
+    createWorkshopElement("p", toDateTimeLocal(workshop.startTime).replace('T', ', '));
+    createWorkshopElement("p", toDateTimeLocal(workshop.endTime).replace('T', ', '));
     createWorkshopElement("p", workshop.description);
 
   } catch (error) {
@@ -119,7 +119,7 @@ updateForm.addEventListener("submit", async (event) => {
 
   try {
     const response = await fetch(`${API_URL}/${workshopId}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
