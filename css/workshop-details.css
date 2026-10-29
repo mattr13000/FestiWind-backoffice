@@ -52,3 +52,118 @@ button:hover {
     flex-direction: column;
   }
 }
+
+
+/* UPDATE WORKSHOP FORM */
+
+#update-section {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+
+#update-section h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #222222;
+}
+
+/* Formulaire */
+
+#update-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#update-form label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+}
+
+#update-form input,
+#update-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #222222;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+#update-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+#update-form input:focus,
+#update-form textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Bouton Save */
+#update-form button[type="submit"] {
+  margin-top: 15px;
+  padding: 12px 20px;
+  background-color: #06b6d4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#update-form button[type="submit"]:hover {
+  background-color: #1d4ed8;
+}
+
+/* Bouton Cancel */
+
+#cancel-update {
+  padding: 12px 20px;
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#cancel-update:hover {
+  background-color: #e5e7eb;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  #update-section {
+    padding: 20px;
+    margin: 20px 0;
+  }
+}
+
+.workshop-card[hidden],
+#update-section[hidden] {
+  display: none;
+}
+
+#update-section,
+#update-section input,
+#update-section textarea,
+#update-section button {
+  font-family: 'Inter', sans-serif;
+}
