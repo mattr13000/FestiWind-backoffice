@@ -1,23 +1,147 @@
-.form-row {
-    display: flex;
-    gap: 20px;
+
+body {
+    background-color: #f0f9ff;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.add-workshop-main {
+    max-width: 1050px;
+    margin: 55px auto;
+    padding: 0 24px;
+}
+
+.add-workshop-header {
+    margin-bottom: 30px;
+}
+
+.add-workshop-header h1 {
+    margin: 0;
+    color: #111827;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.workshop-form {
+    background-color: #ffffff;
+    border: 1px solid #d4e4ef;
+    border-radius: 12px;
+    padding: 35px;
+
+    box-shadow: 0 4px 14px rgba(0, 100, 160, 0.08);
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 9px;
+    margin-bottom: 24px;
+    min-width: 0;
 }
 
+.form-group label {
+    color: #182440;
+    font-size: 15px;
+    font-weight: 600;
+}
 
-#submit {
+.form-group input,
+.form-group select,
+.form-group textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 13px 15px;
+
+    background-color: #ffffff;
+    color: #182440;
+
+    border: 1px solid #d4e4ef;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+    line-height: 1.6;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #007dbb;
+    box-shadow: 0 0 0 3px rgba(0, 125, 187, 0.12);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.form-actions button {
+    background-color: #007dbb;
+    color: #ffffff;
     border: none;
-    padding: 16;
+    border-radius: 8px;
+
+    padding: 13px 28px;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
 }
 
-#add-workshop-form {
-    padding: 8px;
-    border-radius: 2%;
-    border: 1px solid #000000;
+.form-actions button:hover {
+    background-color: #00649b;
+}
+
+.form-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-message {
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-message.success {
+    background-color: #e5f6ed;
+    color: #17633b;
+}
+
+.form-message.error {
+    background-color: #fff0f0;
+    color: #a12626;
+}
+
+@media (max-width: 650px) {
+    .add-workshop-main {
+        margin: 30px auto;
+        padding: 0 16px;
+    }
+
+    .add-workshop-header h1 {
+        font-size: 30px;
+    }
+
+    .workshop-form {
+        padding: 22px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
 }

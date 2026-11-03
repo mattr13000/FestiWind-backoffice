@@ -1,60 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../css/main.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="../css/add-workshop.css">
+
     <script src="../js/workshopForm.js" defer></script>
-    <script src="../js/logout.js" defer></script>
+
     <title>Add Workshop</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/nav-bar.css">
+    <script src="../js/navbar.js" defer></script>
 </head>
 
 <body>
-    <header class="mb-24">
-        <h1>Add Workshop</h1>
-    </header>
+    <header id="shared-navbar" class="bg-navbar"></header>
+    <main class="add-workshop-main">
 
-    <form id="add-workshop-form">
-        <div class="form-group mb-8">
-            <label class="bolder" for="name">Name :</label>
-            <input type=text id="" name="name" minlength="3" maxlength="20" required>
+        <div class="add-workshop-header">
+            <h1>Add Workshop</h1>
         </div>
 
-        <div class="form-group mb-8">
-            <label class="bolder" for="categories">Category :</label>
-            <select id="categories" name="categories" required>
-                <option value="" disabled selected>Choose a category ...</option>
-            </select>
-        </div>
+        <form id="add-workshop-form" class="workshop-form">
 
-        <div class="form-group mb-8">
-            <label class="bolder" for="max-capacity">Max capacity :</label>
-            <input type=number min="1" step="1" id="" name="max-capacity" required>
-        </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    minlength="3"
+                    maxlength="100"
+                    placeholder="Workshop name"
+                    required
+                >
+            </div>
 
-        <div class="form-group mb-8">
-            <label class="bolder" for="start-time">Start time :</label>
-            <input type="datetime-local" id="start-time" name="start-time" required>
-        </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="categories">Category</label>
+                    <select id="categories" name="categories" required>
+                        <option value="" disabled selected>
+                            Choose a category ...
+                        </option>
+                    </select>
+                </div>
 
-        <div class="form-group mb-8">
-            <label class="bolder" for="end-time">End time :</label>
-            <input type="datetime-local" id="end-time" name="end-time" required>
-        </div>
-        <div class="form-group mb-8">
-            <label class="bolder" for="description">Description :</label>
-            <textarea id="description" name="description" rows="4" minlength="3" maxlength="200" required></textarea>
-        </div>
-        
-        <div class="ta-e">
-        <button class="bg-navbar mt-8" type="Submit"  id="submit">Submit</button>
-        </div>
-    </form>
-    <div id="success-message" hidden>
-        <p>Workshop successfully created</p>
-        <button onClick="window.location.href=window.location.href">Add another workshop</button>
-    </div>
+                <div class="form-group">
+                    <label for="max-capacity">Max capacity</label>
+                    <input
+                        type="number"
+                        id="max-capacity"
+                        name="max-capacity"
+                        min="1"
+                        step="1"
+                        placeholder="15"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="start-time">Start time</label>
+                    <input
+                        type="datetime-local"
+                        id="start-time"
+                        name="start-time"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="end-time">End time</label>
+                    <input
+                        type="datetime-local"
+                        id="end-time"
+                        name="end-time"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="5"
+                    minlength="3"
+                    placeholder="Describe your workshop..."
+                    required
+                ></textarea>
+            </div>
+
+            <p id="form-message" class="form-message" role="status" aria-live="polite" hidden></p>
+
+            <div class="form-actions">
+                <button type="submit" id="submit">
+                    Create workshop
+                </button>
+            </div>
+
+        </form>
+
+    </main>
 </body>
-
 </html>

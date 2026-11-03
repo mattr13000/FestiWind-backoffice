@@ -1,3 +1,4 @@
+
 const arrayBody = document.querySelector('#reservations-body');
 
 let currentPage = 1;
@@ -6,10 +7,17 @@ let allRows = [];
 
 loadReservation();
 
-
 async function loadReservation() {
     try {
-        const response = await fetch("http://127.0.0.1:8080/reservations");
+        const token = localStorage.getItem("token");
+
+        const response = await fetch("http://127.0.0.1:8080/reservations", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
         if (!response.ok) {
             throw new Error(`Erreur HTTP: ${response.status}`);
         }
@@ -25,7 +33,7 @@ async function loadReservation() {
                 reservation.userName,
                 formatDate(reservation.startTime),
                 formatDate(reservation.endTime),
-            ]
+            ];
 
             values.forEach(value => {
                 const cell = document.createElement("td");
@@ -42,12 +50,13 @@ async function loadReservation() {
             const trashImg = document.createElement("img");
             trashImg.src = "../assets/images/trash.svg";
             trashImg.alt = "Supprimer";
-            trashImg.style.filter = trashImg.style.filter = "invert(16%) sepia(98%) saturate(4777%)";
+            trashImg.style.filter = "invert(16%) sepia(98%) saturate(4777%)";
 
             trashImg.addEventListener("click", () => {
                 const confirmation = confirm(
                     "Voulez-vous vraiment supprimer cette réservation ?"
                 );
+
                 if (confirmation) {
                     deleteReservation(reservation.id, row);
                 }
@@ -60,30 +69,45 @@ async function loadReservation() {
 
             allRows.push(row);
         });
+
     } catch (error) {
-        console.error(error);
-        statut.textContent = "loading error.";
+        console.error("Erreur de chargement des réservations :", error);
     }
+
     displayPage();
 }
 
 async function deleteReservation(id, row) {
     try {
+        const token = localStorage.getItem("token");
+
         const response = await fetch(`http://127.0.0.1:8080/reservations/${id}`, {
-            method: 'DELETE',
+            method: "DELETE",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             }
         });
+
         if (!response.ok) {
             throw new Error(`HTTP error: ${response.status}`);
         }
 
-        // Remove the reservation's row
-        row.remove();
+        allRows = allRows.filter(item => item !== row);
+
+        const totalPages = Math.max(
+            1,
+            Math.ceil(allRows.length / rowsPerPage)
+        );
+
+        if (currentPage > totalPages) {
+            currentPage = totalPages;
+        }
+
+        displayPage();
 
     } catch (error) {
-        console.error(error);
+        console.error("Erreur de suppression :", error);
     }
 }
 
