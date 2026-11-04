@@ -1,5 +1,5 @@
 const loginForm = document.querySelector("#login-form");
-const API_URL = "http://127.0.0.1:8080/users/login";
+const API_URL = "http://127.0.0.1:8080/users/staff/login";
 const TOKEN_KEY = "token";
 const message = document.querySelector("#message-login");
 
@@ -25,7 +25,7 @@ async function signIn() {
             })
         });
     if (!response.ok) {
-        throw new Error("Email or password invalid.");  
+        throw new Error("Login error");  
     }
 
     const data = await response.json();
