@@ -1,37 +1,50 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Reservations</title>
+    <title>Reservations - FestiWind</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link  href="../css/main.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/nav-bar.css">
+    <link rel="stylesheet" href="../css/reservation.css?v=3">
+
+    <script src="../js/navbar.js" defer></script>
     <script src="../js/controller/ReservationController.js" defer></script>
 </head>
 
 <body>
-    <br>
-    <h1>Reservation List</h1>
-    <br>
-    <p>
-    <table id="reservations-table">
-        <thead>
-            <tr>
-                <th class="workshopName">Workshop name</th>
-                <th class="userName">User</th>
-                <th class="date">Starting time</th>
-                <th class="hour">Ending time</th>
-                <th class="status">Status</th>
-                <th class="action">Action</th>
-            </tr>
-        </thead>
-        <tbody id="reservations-body"></tbody>
-    </table>
-    <div class="pagination">
-        <button id="btn-prev">Previous</button>
-        <span id="page-info">1</span>
-        <button id="btn-next">Next</button>
-    </div>
-</body>
+    <header id="shared-navbar" class="bg-navbar"></header>
 
+    <main class="reservations-page">
+
+        <div class="reservations-header"><h1>Reservations</h1></div>
+
+        <section class="reservations-card">
+
+            <div class="reservations-table-wrapper">
+                <table id="reservations-table">
+                    <thead>
+                        <tr>
+                            <th class="workshopName">Workshop name</th>
+                            <th class="userName">User</th>
+                            <th class="date">Starting time</th>
+                            <th class="hour">Ending time</th>
+                            <th class="status">Status</th>
+                            <th class="action">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="reservations-body"></tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <button id="btn-prev" type="button">Previous</button>
+                <span id="page-info">1</span>
+                <button id="btn-next" type="button">Next</button>
+            </div>
+        </section>
+    </main>
+</body>
 </html>

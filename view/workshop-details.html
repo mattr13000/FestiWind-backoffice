@@ -1,38 +1,77 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Workshop Details - FestiWind</title>
-<link rel="stylesheet" href="../css/workshop-details.css">
-<script src="../js/workshop-details.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/workshop-details.css?v=2">
+
+    <script src="../js/workshop-details.js?v=2" defer></script>
+
+    <title>Workshop Details - FestiWind</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/nav-bar.css">
+    <script src="../js/navbar.js" defer></script>
 </head>
 
 <body>
-  <main class="container">
+    <header id="shared-navbar" class="bg-navbar"></header>
+    <main class="container">
 
-    <h1 id="workshop-title">Workshop Details</h1>
+        <h1 id="workshop-title">Workshop Details</h1>
 
-    <article class="workshop-card">
+        <article class="workshop-card">
 
-      <section id="workshop-info">
-      </section>
+            <section id="workshop-info"></section>
 
-      <section class="workshop-actions">
-        <button id="delete-button" type="button">
-          Delete
-        </button>
+            <section class="workshop-actions">
+                <button id="delete-button" type="button">
+                    Delete
+                </button>
 
-        <button id="update-button" type="button">
-          Update
-        </button>
-      </section>
+                <button id="update-button" type="button">
+                    Update
+                </button>
+            </section>
 
-    </article>
+        </article>
 
-    <p id="message" role="status"></p>
+        <section id="update-section" hidden>
+            <h2>Update Workshop</h2>
 
-  </main>
+            <form id="update-form">
+
+                <label for="update-name">Name</label>
+                <input type="text" id="update-name" required>
+
+                <label for="update-category">Category</label>
+                <select id="update-category" required>
+                    <option value="">Select a category</option>
+                </select>
+
+                <label for="update-description">Description</label>
+                <textarea id="update-description" required></textarea>
+
+                <label for="update-start">Start time</label>
+                <input type="datetime-local" id="update-start" required>
+
+                <label for="update-end">End time</label>
+                <input type="datetime-local" id="update-end" required>
+
+                <label for="update-capacity">Maximum capacity</label>
+                <input type="number" id="update-capacity" min="1" required>
+
+                <div class="update-actions">
+                    <button type="button" id="cancel-update">Cancel</button>
+                    <button type="submit">Save changes</button>
+                </div>
+
+            </form>
+        </section>
+
+        <p id="message" role="status" aria-live="polite"></p>
+
+    </main>
 </body>
 </html>

@@ -1,25 +1,229 @@
-.logo { width: 100px; }
-
-.logo-logout { width: 80px; }
-
-.logout { margin-left: auto; }
-
-.nav-btn:hover { 
-    background-color: white;
-    color: rgba(3, 4, 94, 1);
-    border-radius: 8px;
-    padding: 8px;
+.logo {
+    width: 100px;
 }
 
-.logo-logout:hover {
-    background-color: rgba(3, 4, 94, 1);
-    border-radius: 8px;
-    padding: 8px;
+.logo-logout {
+    width: 80px;
+    transition: opacity 0.2s ease;
+}
+
+.logout {
+    margin-left: auto;
 }
 
 .logout button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.logo-logout:hover {
+    opacity: 0.75;
+}
+
+/* Navigation stable */
+
+.bg-navbar nav ul {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bg-navbar .nav-btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Survol doux, sans déplacement */
+
+.bg-navbar .nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+/* Lien de la page active */
+
+.bg-navbar .nav-btn.active,
+.bg-navbar .nav-btn.active:hover {
+    background-color: #ffffff;
+    color: #03045e;
+    font-weight: 600;
+}
+
+.bg-navbar .nav-btn:focus-visible,
+.logout button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+
+/* NAVBAR FULL WIDTH - FESTIWIND */
+
+html,
+body {
+    margin: 0;
+    padding-top: 0;
+}
+
+#shared-navbar {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Remove container width limitation inside navbar */
+
+#shared-navbar > .container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 8px 28px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+/* Logo on the left */
+
+#shared-navbar .logo {
+    width: 100px;
+    display: block;
+}
+
+/* Navigation links */
+
+#shared-navbar nav {
+    margin: 0;
+}
+
+/* Logout on the far right */
+
+#shared-navbar .logout {
+    margin-left: auto;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+    #shared-navbar > .container {
+        padding: 8px 16px;
+        gap: 12px;
+    }
+
+    #shared-navbar .logo {
+        width: 70px;
+    }
+
+    #shared-navbar .logo-logout {
+        width: 55px;
+    }
+}
+
+/* FESTIWIND UNIFORM NAVBAR */
+
+html,
+body {
+    margin: 0;
+}
+
+body {
+    padding-top: 0 !important;
+}
+
+#shared-navbar.bg-navbar {
+    width: 100%;
+    min-height: 88px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#shared-navbar.bg-navbar > .container {
+    width: 100%;
+    max-width: none;
+    min-height: 88px;
+    margin: 0;
+    padding: 10px 28px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+#shared-navbar.bg-navbar .logo {
+    width: 100px;
+    height: auto;
+    display: block;
+}
+
+#shared-navbar.bg-navbar nav {
+    margin: 0;
+}
+
+#shared-navbar.bg-navbar nav ul {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#shared-navbar.bg-navbar .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+#shared-navbar.bg-navbar .logout {
+    margin-left: auto;
+}
+
+#shared-navbar.bg-navbar .logo-logout {
+    width: 70px;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    #shared-navbar.bg-navbar,
+    #shared-navbar.bg-navbar > .container {
+        min-height: 72px;
+    }
+
+    #shared-navbar.bg-navbar > .container {
+        padding: 8px 16px;
+        gap: 12px;
+    }
+
+    #shared-navbar.bg-navbar .logo {
+        width: 70px;
+    }
+
+    #shared-navbar.bg-navbar .logo-logout {
+        width: 50px;
+    }
+
+    #shared-navbar.bg-navbar .nav-btn {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
 }
